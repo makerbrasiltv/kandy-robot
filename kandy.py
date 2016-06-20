@@ -17,27 +17,27 @@ G.output(TRIG,1)
 time.sleep(0.00001)
 G.output(TRIG,0)
 
-  while G.input(ECHO) == 0:
-    pass
-  start = time.time()
+while G.input(ECHO) == 0:
+  pass
+start = time.time()
 
-  while G.input(ECHO) == 1:
-    pass
-  stop = time.time()
+while G.input(ECHO) == 1:
+  pass
+stop = time.time()
 
-  valor = (stop - start) * 17000
+valor = (stop - start) * 17000
 
-  souInt = int(valor)
-  souStr = str(souInt)
+souInt = int(valor)
+souStr = str(souInt)
 
-  os.system("espeak -v pt+f4 " +souStr)
+os.system("espeak -v pt+f4 " +souStr)
 
-  time.sleep(0.1)
+time.sleep(0.1)
 
-  os.system("espeak -v pt+f4 -s 120 'centimetros'")
+os.system("espeak -v pt+f4 -s 120 'centimetros'")
 
-  #t = datetime.now()stltime("%k %M")
+#t = datetime.now()stltime("%k %M")
 
-  G.cleanup()
+G.cleanup()
 
-  time.sleep(3)
+time.sleep(3)
