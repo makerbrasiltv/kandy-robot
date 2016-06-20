@@ -1,8 +1,11 @@
 #!/bin/bash
+# www.makerbrasiltv.com.br
+
+
 clear
 echo "Instalador RPi.GPIO";
 sleep 1;
-echo "MakerBrasilTv - makerrasiltv.wordpress.com";
+echo "MakerBrasilTv - www.makerrasiltv.com.br";
 sleep 5;
 clear
 
