@@ -5,7 +5,7 @@
 clear
 echo "Instalador RPi.GPIO";
 sleep 1;
-echo "MakerBrasilTv - www.makerrasiltv.com.br";
+echo "MakerBrasilTv - www.makerbrasiltv.com.br";
 sleep 5;
 clear
 
