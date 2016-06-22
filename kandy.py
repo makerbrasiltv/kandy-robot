@@ -17,27 +17,39 @@ G.output(TRIG,1)
 time.sleep(0.00001)
 G.output(TRIG,0)
 
-while G.input(ECHO) == 0:
-  pass
-start = time.time()
+def neural(interacao, souInt):
+   if souInt >= 10:
+      print 'sou 10'
+   
+   elif souInt >= 20:
+      print 'sou 20'
+   else
+      print 'nada'
 
-while G.input(ECHO) == 1:
-  pass
-stop = time.time()
+while True:
 
-valor = (stop - start) * 17000
+   while G.input(ECHO) == 0:
+     pass
+   start = time.time()
 
-souInt = int(valor)
-souStr = str(souInt)
+   while G.input(ECHO) == 1:
+     pass
+   stop = time.time()
 
-os.system("espeak -v pt+f4 " +souStr)
+   valor = (stop - start) * 17000
 
-time.sleep(0.1)
+   souInt = int(valor)
+   souStr = str(souInt)
 
-os.system("espeak -v pt+f4 -s 120 'centimetros'")
+   os.system("espeak -v pt+f4 " +souStr)
 
-#t = datetime.now()stltime("%k %M")
+   time.sleep(0.1)
 
-G.cleanup()
+   os.system("espeak -v pt+f4 -s 120 'centimetros'")
 
-time.sleep(3)
+   #t = datetime.now()stltime("%k %M")
+
+   G.cleanup()
+
+   time.sleep(1)
+
