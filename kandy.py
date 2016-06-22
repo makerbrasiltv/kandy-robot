@@ -4,29 +4,37 @@ import RPi.GPIO as G
 import time
 import os
 
-G.setmode(G.BOARD)
+lastTalk = ""
+talk = ".."
 
-TRIG = 18
-ECHO = 23
-#print "Medindo distancia em processo"
-G.setup(TRIG,G.OUT)
-G.output(TRIG,0)	
-G.setup(ECHO, G.IN)
-time.sleep(0.1)
-G.output(TRIG,1)
-time.sleep(0.00001)
-G.output(TRIG,0)
+def neural(souInt):
 
-def neural(interacao, souInt):
-   if souInt >= 10:
-      print 'sou 10'
-   
-   elif souInt >= 20:
-      print 'sou 20'
-   else
+   if souInt <= 10:
+      print 'EU sou 10'
+      talk = "Ola dez"
+   elif souInt <= 20:
+      print 'Eu sou 20'
+      talk = "ola 20 "
+   else:
       print 'nada'
+      talk = "..."
+   
+   lastTalk = talk
 
 while True:
+
+   G.setmode(G.BOARD)
+
+   TRIG = 18
+   ECHO = 23
+   #print "Medindo distancia em processo"
+   G.setup(TRIG,G.OUT)
+   G.output(TRIG,0)	
+   G.setup(ECHO, G.IN)
+   time.sleep(0.1)
+   G.output(TRIG,1)
+   time.sleep(0.00001)
+   G.output(TRIG,0)
 
    while G.input(ECHO) == 0:
      pass
@@ -39,17 +47,21 @@ while True:
    valor = (stop - start) * 17000
 
    souInt = int(valor)
-   souStr = str(souInt)
+   souStr = str(souInt) 
 
-   os.system("espeak -v pt+f4 " +souStr)
+   # ver como implementar a ultima fala e passar para a funcao
+   neural(souInt)
+
+   #####os.system("espeak -v pt+f4 " +souStr)
 
    time.sleep(0.1)
 
-   os.system("espeak -v pt+f4 -s 120 'centimetros'")
+   #####os.system("espeak -v pt+f4 -s 120 'centimetros'")
 
    #t = datetime.now()stltime("%k %M")
+
+   print souStr
 
    G.cleanup()
 
    time.sleep(1)
-
